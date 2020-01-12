@@ -7,18 +7,25 @@
     <link rel="stylesheet" href="/css/main.css">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <style>
+      *{
+        box-sizing: border-box;
+      }
       #approot{
 
+      }
+      .container{
+        max-width: 1200px;
+        margin: 0 auto;
       }
       .all-books{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 20px;
+        grid-gap: 40px 20px;
         padding: 40px 0;
       }
       .book-container{
-        background: black;
         height: 300px;
         display: flex;
         justify-content: center;
@@ -28,11 +35,82 @@
         background: red;
         width: 200px;
         height: 300px;
+        cursor: pointer;
+        background-size: cover;
+        background-position: center;
+        background-repeat: none;
+      }
+      #myList{
+        background: white;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 400px;
+        height: 100vh;
+        padding: 20px;
+        -webkit-box-shadow: -12px 10px 71px -11px rgba(0,0,0,0.75);
+        -moz-box-shadow: -12px 10px 71px -11px rgba(0,0,0,0.75);
+        box-shadow: -12px 10px 71px -11px rgba(0,0,0,0.75);
+        transform: translate3d(400px, 0, 0);
+      }
+      #myList.active{
+        transform: translate3d(0, 0, 0);
+        transition: transform .4s ease-in-out;
+      }
+      #myList h3{
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+      #myList ul {
+        margin-bottom: 0 0 1.5rem 20px;
+      }
+      #myList ul li{
+        display: list-item;
+        padding: 10px 0;
+        list-style-type: circle !important;
+      }
+      #myList ul li span.delete-btn{
+        display: inline-block;
+        padding: 10px;
+        background: red;
+        color: white;
+        border-radius: 5px;
+        margin-left: 20px;
+        cursor: pointer;
+      }
+      #myList .close-list{
+        display: block;
+        margin: 0 auto;
+        background: black;
+        color: white;
+        padding: 20px 40px;
+        text-align: center;
+      }
+      .open-list{
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: black;
+        padding: 20px;
+        font-size: 3rem;
+        color: white;
+        cursor: pointer;
+      }
+      .open-list.closed{
+        display: block;
+      }
+      .open-list.open{
+        display: none;
       }
     </style>
   </head>
   <body>
-    <div id="root">
+    <div id="approot">
+      <div class="open-list">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+      </div>
+      <div class="container">
       <section class="all-books">
         <div class="book-container">
           <div class="book">
@@ -49,6 +127,43 @@
 
           </div>
         </div>
+        <div class="book-container">
+            <div class="book">
+  
+            </div>
+          </div>
+          <div class="book-container">
+            <div class="book">
+  
+            </div>
+          </div>
+          <div class="book-container">
+            <div class="book">
+  
+            </div>
+          </div>
+          <div class="book-container">
+              <div class="book">
+    
+              </div>
+            </div>
+            <div class="book-container">
+              <div class="book">
+    
+              </div>
+            </div>
+            <div class="book-container">
+              <div class="book">
+    
+              </div>
+            </div>
+      </section>
+    </div>
+      <section id="myList">
+        <h3>My List of Books</h3>
+        <ul>
+          <li>Harry Potter</li>
+        </ul>
       </section>
     </div>
     
