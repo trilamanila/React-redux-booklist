@@ -48,14 +48,18 @@
         width: 400px;
         height: 100vh;
         padding: 20px;
+        -webkit-box-shadow: 0 0 0 0 rgba(0,0,0,0);
+        -moz-box-shadow: 0 0 0 0 rgba(0,0,0,0);
+        box-shadow: 0 0 0 0 rgba(0,0,0,0);
+        transform: translate3d(400px, 0, 0);
+        transition: all .4s ease-in-out;
+      }
+      #myList.active{
         -webkit-box-shadow: -12px 10px 71px -11px rgba(0,0,0,0.75);
         -moz-box-shadow: -12px 10px 71px -11px rgba(0,0,0,0.75);
         box-shadow: -12px 10px 71px -11px rgba(0,0,0,0.75);
-        transform: translate3d(400px, 0, 0);
-      }
-      #myList.active{
         transform: translate3d(0, 0, 0);
-        transition: transform .4s ease-in-out;
+        
       }
       #myList h3{
         font-size: 2rem;
@@ -103,6 +107,69 @@
       .open-list.open{
         display: none;
       }
+      #modal{
+      max-width: 2700px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+      background: rgba(0,0,0,0.75);
+      opacity: 0;
+      visibility: hidden;
+      transition: all .4s ease-in-out;
+    }
+    #modal.active{
+      visibility: visible;
+      background: rgba(0,0,0,0.75);
+      opacity: 1;
+    }
+    #modal .modal-container{
+      max-width: 700px;
+      background: white;
+      padding: 20px;
+    }
+    #modal .modal-grid{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      grid-gap: 20px;
+    }
+    #modal .modal-grid .images{
+      width: 200px;
+    }
+    #modal .modal-grid .images .cover{
+      height: 400px;
+    }
+    #modal .modal-grid .info h2{
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    #modal .modal-grid .info .info-line{
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+    #modal .modal-grid .info .info-line span{
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+    #modal .modal-grid .info p{
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    #modal .modal-container .close-modal{
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 20px;
+      color: white;
+      background: red;
+      cursor: pointer;
+    }
     </style>
   </head>
   <body>
@@ -113,7 +180,7 @@
       <div class="container">
       <section class="all-books">
         <div class="book-container">
-          <div class="book">
+          <div class="book" style="background-image: url('https://vignette.wikia.nocookie.net/onepiece/images/0/0e/Volume_1.png/revision/latest/top-crop/width/360/height/450?cb=20130115020528');">
 
           </div>
         </div>
@@ -162,10 +229,42 @@
       <section id="myList">
         <h3>My List of Books</h3>
         <ul>
-          <li>Harry Potter</li>
+          <li>Harry Potter <span class="delete-btn">Delete</span></li>
+          <li>Harry Potter <span class="delete-btn">Delete</span></li>
+          <li>Harry Potter <span class="delete-btn">Delete</span></li>
+          <li>Harry Potter <span class="delete-btn">Delete</span></li>
+          <li>Harry Potter <span class="delete-btn">Delete</span></li>
         </ul>
+        <div class="close-list">Close List</div>
       </section>
     </div>
-    
+    <section id="modal">
+      <div class="modal-container">
+        <div class="close-modal">
+          <i class="fas fa-window-close"></i>
+        </div>
+      <div class="modal-grid">
+        <div class="images">
+          <div class="cover"
+              style="background-image: url('https://vignette.wikia.nocookie.net/onepiece/images/0/0e/Volume_1.png/revision/latest/top-crop/width/360/height/450?cb=20130115020528');">
+          </div>
+        </div>
+        <div class="info">
+          <h2>Title</h2>
+          <div class="info-line">
+            <span class="bold">Author:</span>
+            Eiichiro Oda
+          </div>
+          <div class="info-line">
+              <span class="bold">Published:</span>
+              1997
+            </div>
+            <p class="review">
+                One Piece is a Japanese manga series written and illustrated by Eiichiro Oda. It has been serialized in Shueisha's Weekly Shōnen Jump magazine since July 22, 1997, and has been collected into 95 tankōbon volumes.
+            </p>
+        </div>
+      </div>
+    </div>
+    </section>
   </body>
 </html>
